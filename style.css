@@ -1,0 +1,308 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins", Arial, sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #667eea,
+        #764ba2
+    );
+
+}
+
+
+/* Main Container */
+
+.container{
+
+    width:450px;
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.15);
+
+    animation:show .5s ease;
+
+}
+
+
+
+@keyframes show{
+
+    from{
+        transform:translateY(30px);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+}
+
+
+
+
+h1{
+
+    text-align:center;
+
+    color:#333;
+
+    margin-bottom:25px;
+
+    font-size:32px;
+
+}
+
+
+
+
+/* Input Section */
+
+.input-box{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+input{
+
+    flex:1;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    border:2px solid #eee;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+
+input:focus{
+
+    border-color:#667eea;
+
+    box-shadow:
+    0 0 8px rgba(102,126,234,.3);
+
+}
+
+
+
+
+#addBtn{
+
+    background:#667eea;
+
+    color:white;
+
+    border:none;
+
+    padding:0 20px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+
+
+#addBtn:hover{
+
+    background:#5365d8;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+
+/* Todo Card */
+
+.todo-item{
+
+    background:#f8f9ff;
+
+    padding:16px;
+
+    margin-bottom:15px;
+
+    border-radius:15px;
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    border-left:5px solid #667eea;
+
+
+    transition:.3s;
+
+}
+
+
+
+
+.todo-item:hover{
+
+    transform:translateX(5px);
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.todo-item p{
+
+    color:#333;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    max-width:200px;
+
+    word-wrap:break-word;
+
+}
+
+
+
+
+
+/* Buttons */
+
+
+.todo-item button{
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    color:white;
+
+    margin-left:5px;
+
+    font-size:13px;
+
+    transition:.3s;
+
+}
+
+
+
+.todo-item button:first-of-type{
+
+    background:#ffb703;
+
+}
+
+
+
+.todo-item button:first-of-type:hover{
+
+    background:#e09b00;
+
+}
+
+
+
+
+.todo-item button:last-of-type{
+
+    background:#ef233c;
+
+}
+
+
+
+.todo-item button:last-of-type:hover{
+
+    background:#c91832;
+
+}
+
+
+
+
+/* Mobile Responsive */
+
+
+@media(max-width:500px){
+
+
+    .container{
+
+        width:90%;
+
+        padding:20px;
+
+    }
+
+
+
+    .input-box{
+
+        flex-direction:column;
+
+    }
+
+
+
+    #addBtn{
+
+        height:45px;
+
+    }
+
+
+}
+
+
