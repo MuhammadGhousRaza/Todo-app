@@ -1,7 +1,8 @@
 
 
-const supabaseUrl = "#############";
-const supabaseAnonKey = "#########################";
+const supabaseUrl = "########################################";
+
+const supabaseAnonKey = "########################################";
 
 let supabaseClient;
 
