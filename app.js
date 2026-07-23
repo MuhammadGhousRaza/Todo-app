@@ -1,30 +1,51 @@
+import { addTodo, getTodos } from "./crud.js";
+
 const todoInput = document.querySelector("#todoInput");
 const addBtn = document.querySelector("#addBtn");
+const prevBtn = document.querySelector("#prevPage");
+const nextBtn = document.querySelector("#nextPage");
+const pageInfo = document.querySelector("#pageInfo");
 
-getTodos();
+let currentPage = 1;
+const pageSize = 8;
 
-addBtn.addEventListener("click", () => {
-    const todo = todoInput.value.trim();
+async function loadPage(page = 1) {
+  currentPage = page;
+  const res = await getTodos(currentPage, pageSize);
+  const total = res && res.count ? res.count : 0;
+  const totalPages = Math.max(1, Math.ceil((total || 0) / pageSize));
 
-    if (!todo) {
-        alert("Please enter a todo");
-        return;
-    }
+  if (pageInfo) pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  if (prevBtn) prevBtn.disabled = currentPage <= 1;
+  if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
+}
 
-    addTodo(todo);
-    todoInput.value = "";
+addBtn.addEventListener("click", async () => {
+  const todo = todoInput.value.trim();
+
+  if (!todo) {
+    alert("Please enter a todo");
+    return;
+  }
+
+  await addTodo(todo, currentPage, pageSize);
+  todoInput.value = "";
+  await loadPage(currentPage);
 });
 
-
-function createTodoElement(id, text) {
-  const div = document.createElement("div");
-  div.className = "todo-item";
-  div.innerHTML = `
-    <p>${text}</p>
-    <div>
-      <button onclick="editTodo('${id}')">Edit</button>
-      <button onclick="deleteTodo('${id}')">Delete</button>
-    </div>
-  `;
-  return div;
+if (prevBtn) {
+  prevBtn.addEventListener("click", async () => {
+    if (currentPage > 1) {
+      await loadPage(currentPage - 1);
+    }
+  });
 }
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", async () => {
+    await loadPage(currentPage + 1);
+  });
+}
+
+// Initial load
+loadPage(1);

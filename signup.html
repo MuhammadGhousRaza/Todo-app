@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up • Todo App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="auth-shell">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div>
+          <p class="eyebrow">Create your account</p>
+          <h1>Get started with Todo</h1>
+          <p class="auth-copy">Sign up in seconds and keep your task list up to date from anywhere.</p>
+        </div>
+      </div>
+
+      <form id="signupForm" class="auth-form" novalidate>
+        <div class="field-group">
+          <label for="signupEmail">Email address</label>
+          <input id="signupEmail" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="field-group">
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" name="password" type="password" placeholder="Create a password" required minlength="6" />
+        </div>
+
+        <button id="signupBtn" type="submit" class="btn btn-primary">
+          <span>Create account</span>
+          <span class="loader hidden" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-footnote">
+          Already have an account? <a href="login.html">Log in</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast-container" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

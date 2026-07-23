@@ -16,47 +16,54 @@
 <body>
 
 
-    <div class="container">
-
-        <h1>Todo App</h1>
-
-
-        <div class="input-box">
-
-            <input 
-                type="text" 
-                id="todoInput" 
-                placeholder="Enter Todo"
-            >
-
-
-            <button id="addBtn">
-                Add Todo
-            </button>
-
+    <div class="dashboard-shell">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Your workspace</p>
+          <h1>Todo Dashboard</h1>
+          <p class="subheading">Manage tasks with speed, stay organized, and never miss a deadline.</p>
         </div>
 
-
-
-        <div id="todoList">
-
+        <div class="dashboard-actions">
+          <span class="user-chip">Signed in as <strong id="userEmail">Loading...</strong></span>
+          <button id="logoutBtn" class="btn btn-secondary">Logout</button>
         </div>
+      </header>
 
+      <main class="dashboard-card">
+        <section class="task-hero">
+          <div>
+            <p class="eyebrow">Quick add</p>
+            <h2>Create a new task</h2>
+          </div>
 
+          <div class="input-box">
+            <input
+              type="text"
+              id="todoInput"
+              placeholder="What needs to be done?"
+              autocomplete="off"
+            />
+            <button id="addBtn" class="btn btn-primary">Add Todo</button>
+          </div>
+        </section>
+
+        <section id="todoList" class="todo-grid"></section>
+
+        <div class="pagination" id="pagination">
+          <button id="prevPage" class="btn btn-secondary">Previous</button>
+          <div class="page-info" id="pageInfo">Page 1</div>
+          <button id="nextPage" class="btn btn-secondary">Next</button>
+        </div>
+      </main>
     </div>
 
+    <div id="toast" class="toast-container" aria-live="polite"></div>
 
-<!-- Supabase CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- Connection -->
-<script src="supabaseClient.js"></script>
-
-<!-- CRUD -->
-<script src="crud.js"></script>
-
-<!-- App -->
-<script src="app.js"></script>
+    <!-- Supabase CDN (provides global `supabase` for legacy client file) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="app.js"></script>
 
 
 </body>
